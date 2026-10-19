@@ -1548,7 +1548,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                 filename: `Breast_Cancer_Conference_Invitation_${fileGuest}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
-                    scale: 2,
+                    scale: 1,
                     backgroundColor: '#ffffff',
                     useCORS: true,
                     logging: false,
@@ -1573,8 +1573,14 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
 
             showNotification('جارٍ تجهيز ملف الدعوة للتحميل...', '⏳');
             try {
-                await window.html2pdf().set(options).from(element).save();
-                showNotification('تم تحميل ملف الدعوة PDF بنجاح.', '✓');
+                // On mobile browsers, a very large canvas can stall indefinitely.
+                // Keep rendering lightweight and fail clearly instead of spinning forever.
+                const pdfTask = window.html2pdf().set(options).from(element).save();
+                await Promise.race([
+                    pdfTask,
+                    new Promise((_, reject) => setTimeout(() => reject(new Error('PDF generation timed out')), 20000))
+                ]);
+                showNotification('تم تجهيز ملف الدعوة PDF. إذا لم يظهر الملف، اسمحي بالتنزيل من المتصفح.', '✓');
             } catch (error) {
                 console.error('PDF export failed:', error);
                 showNotification('لم ينجح تحميل PDF. أعيدي المحاولة بعد تحديث الصفحة.', '!');
