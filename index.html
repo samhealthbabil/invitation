@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#831843">
     <meta name="description" content="الدعوة الرسمية لمؤتمر سرطان الثدي التخصصي 2026 — الكشف المبكر أمل وحياة.">
-    <title>مؤتمر سرطان الثدي - شركة شام هيلث ومستشفى الإمام الصادق</title>
+    <title>مؤتمر سرطان الثدي - شركة Şam Health ومستشفى الإمام الصادق</title>
     <!-- Google Fonts: Cairo & Amiri -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -185,21 +185,19 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
 
         /* Print styles */
         @media print {
-            body {
-                background: white !important;
-                color: black !important;
-            }
-            .no-print {
-                display: none !important;
-            }
+            @page { size: A4 portrait; margin: 12mm; }
+            body { background: #fff !important; color: #000 !important; }
+            body * { visibility: hidden !important; }
+            #invitationCard, #invitationCard * { visibility: visible !important; }
             #invitationCard {
-                box-shadow: none !important;
-                border: 2px solid #db2777 !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 20px !important;
+                position: absolute !important; left: 0 !important; top: 0 !important;
+                width: 100% !important; max-width: 100% !important;
+                margin: 0 !important; box-shadow: none !important;
+                border: 2px solid #db2777 !important; padding: 20px !important;
+                break-inside: avoid !important;
             }
+            .no-print { display: none !important; }
+            #welcomeInvitationModal { display: none !important; }
         }
 
 
@@ -458,7 +456,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
         <div class="welcome-ribbon" aria-hidden="true">♡</div>
         <div class="text-xs font-extrabold tracking-wide" style="color:#a52b61">دعوة رسمية • 2026</div>
         <h2 id="welcomeInvitationTitle">أهلاً بكم في مؤتمر سرطان الثدي التخصصي</h2>
-        <p>يسرّ شركة شام هيلث ومستشفى الإمام الصادق دعوتكم للمشاركة في مؤتمر التوعية بسرطان الثدي والكشف المبكر.</p>
+        <p>يسرّ شركة Şam Health ومستشفى الإمام الصادق دعوتكم للمشاركة في مؤتمر التوعية بسرطان الثدي والكشف المبكر.</p>
         <div style="display:grid;gap:8px;margin-top:18px;text-align:right;border:1px solid #f0d5e2;border-radius:16px;background:#ffffffc9;padding:15px;color:#54203a;font-size:13px">
           <div><strong style="color:#a52b61">التاريخ:</strong> الثلاثاء، 20 تشرين الأول 2026</div>
           <div><strong style="color:#a52b61">الوقت:</strong> 9:00 صباحاً</div>
@@ -491,7 +489,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                 </div>
                 <div>
                     <h1 class="font-bold text-base md:text-lg text-brand-900 leading-tight">مؤتمر سرطان الثدي 2026</h1>
-                    <p class="text-xs text-brand-700/80 font-medium">شركة شام هيلث & مستشفى الإمام الصادق</p>
+                    <p class="text-xs text-brand-700/80 font-medium">شركة Şam Health & مستشفى الإمام الصادق</p>
                 </div>
             </div>
 
@@ -559,7 +557,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                 <!-- Organizer Presentation Tag -->
                 <div class="pt-2">
                     <div class="organizer-tag inline-block bg-white/15 backdrop-blur-lg px-6 py-3 rounded-2xl border border-white/25 text-sm md:text-base font-medium">
-                        تنظيم <span class="font-bold text-white">شركة شام هيلث</span> بالتعاون المشترك مع <span class="font-bold text-white">مستشفى الإمام الصادق - بابل/الحلة</span>
+                        تنظيم <span class="font-bold text-white">شركة Şam Health</span> بالتعاون المشترك مع <span class="font-bold text-white">مستشفى الإمام الصادق - بابل/الحلة</span>
                     </div>
                 </div>
 
@@ -713,8 +711,8 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                         <!-- Left: Company Info -->
                         <div class="text-left">
                             <span class="text-[11px] font-bold text-slate-400 block tracking-wider">الجهة المنظمة</span>
-                            <span class="text-xs font-black text-brand-900 block">شركة شام هيلث</span>
-                            <span class="text-[10px] text-slate-500 font-medium">SHAM HEALTH</span>
+                            <span class="text-xs font-black text-brand-900 block">شركة Şam Health</span>
+                            <span class="text-[10px] text-slate-500 font-medium">Şam Health</span>
                         </div>
                     </div>
 
@@ -734,7 +732,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                         <div class="text-justify leading-relaxed text-slate-700 text-sm sm:text-base font-medium space-y-3 px-2">
                             <p class="font-bold text-brand-900">تحية طيبة ومباركة وبعد،</p>
                             <p>
-                                يسرّ <strong class="text-brand-900 font-bold">شركة شام هيلث</strong> و<strong class="text-brand-900 font-bold">مستشفى الإمام الصادق</strong> دعوتكم الكريمة لحضور فعاليات <span class="font-bold text-brand-800">«مؤتمر سرطان الثدي التخصصي»</span>، الذي يُقام بهدف تعزيز الوعي بأهمية الكشف المبكر، وتسليط الضوء على أحدث المستجدات في مجالات التشخيص والعلاج الجراحي والكيميائي، ودعم كافة الجهود الرامية للحد من انتشار المرض ورعاية صحة المرأة.
+                                يسرّ <strong class="text-brand-900 font-bold">شركة Şam Health</strong> و<strong class="text-brand-900 font-bold">مستشفى الإمام الصادق</strong> دعوتكم الكريمة لحضور فعاليات <span class="font-bold text-brand-800">«مؤتمر سرطان الثدي التخصصي»</span>، الذي يُقام بهدف تعزيز الوعي بأهمية الكشف المبكر، وتسليط الضوء على أحدث المستجدات في مجالات التشخيص والعلاج الجراحي والكيميائي، ودعم كافة الجهود الرامية للحد من انتشار المرض ورعاية صحة المرأة.
                             </p>
                             <p class="italic text-slate-600 text-xs sm:text-sm bg-pink-50/70 p-3 rounded-lg border-r-4 border-brand-500">
                                 «إن حضوركم الكريم يُمثّل إضافة قيّمة لهذا الحدث العلمي والإنساني، ويعكس اهتمامكم العالي بدعم المبادرات الصحية النبيلة في محافظة بابل.»
@@ -768,7 +766,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                                     <span class="text-xs font-bold text-brand-800">متواجدون لخدمتكم 24/7</span>
                                 </div>
                                 <p class="text-[11px] text-slate-500">
-                                    شركة شام هيلث & إدارة مستشفى الإمام الصادق المنظمة للمؤتمر
+                                    شركة Şam Health & إدارة مستشفى الإمام الصادق المنظمة للمؤتمر
                                 </p>
                             </div>
 
@@ -808,15 +806,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                     </svg>
                     <span>تأكيد الحضور عبر الواتساب</span>
                 </button>
-
-                <!-- Copy Link / Share -->
-                <button id="copyLinkBtn" class="px-5 py-3.5 rounded-2xl bg-white border border-pink-200 hover:bg-pink-50 text-brand-800 font-bold transition-all shadow-sm hover:shadow flex items-center justify-center gap-2 cursor-pointer">
-                    <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                    </svg>
-                    <span>نسخ نص الدعوة</span>
-                </button>
-            </div>
+</div>
         </section>
 
         <!-- VIP HONOREES & KEY FIGURES SECTION -->
@@ -1208,7 +1198,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                     مقر إقامة المؤتمر والتواصل
                 </h2>
                 <p class="text-slate-500 text-sm max-w-md mx-auto">
-                    للتنسيق الإعلامي وتأكيد الحضور، تواصلوا مع إدارة إعلام شركة شام هيلث
+                    للتنسيق الإعلامي وتأكيد الحضور، تواصلوا مع إدارة إعلام شركة Şam Health
                 </p>
             </div>
 
@@ -1231,9 +1221,9 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                     <div class="w-12 h-12 mx-auto rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xl">
                         
                     </div>
-                    <h4 class="font-bold text-slate-900 text-base">إدارة إعلام شركة شام هيلث</h4>
+                    <h4 class="font-bold text-slate-900 text-base">إدارة إعلام شركة Şam Health</h4>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        إدارة إعلام شركة شام هيلث<br>
+                        إدارة إعلام شركة Şam Health<br>
                         الهاتف والواتساب:<br>
                         <span dir="ltr" class="font-bold text-brand-900 text-sm">07725247802</span>
                     </p>
@@ -1250,7 +1240,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                     </div>
                     <h4 class="font-bold text-slate-900 text-base">الجهات المنظمة</h4>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        <strong class="text-brand-900">شركة شام هيلث</strong><br>
+                        <strong class="text-brand-900">شركة Şam Health</strong><br>
                         شريك الرعاية والتقنيات الطبية<br>
                         بالتعاون مع إدارة مستشفى الإمام الصادق
                     </p>
@@ -1328,7 +1318,7 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
     <footer class="no-print border-t border-pink-200/80 bg-white/70 backdrop-blur-md py-8 text-center text-xs text-slate-500 space-y-2">
         <div class="flex items-center justify-center gap-2 text-brand-800 font-bold">
             
-            <span>مؤتمر سرطان الثدي 2026 • شركة شام هيلث & مستشفى الإمام الصادق</span>
+            <span>مؤتمر سرطان الثدي 2026 • شركة Şam Health & مستشفى الإمام الصادق</span>
         </div>
         <p>بابل - الحلة | معاً لتعزيز الوعي والفحص المبكر وسلامة المجتمع</p>
     </footer>
@@ -1374,7 +1364,6 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
         const displayGuestOrg = document.getElementById('displayGuestOrg');
         const downloadPdfBtn = document.getElementById('downloadPdfBtn');
         const whatsappRsvpBtn = document.getElementById('whatsappRsvpBtn');
-        const copyLinkBtn = document.getElementById('copyLinkBtn');
         const addToCalBtn = document.getElementById('addToCalBtn');
         const toast = document.getElementById('toast');
         const toastMsg = document.getElementById('toastMsg');
@@ -1488,115 +1477,129 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
                 `اسم المدعو: ${guestName ? `${guestTitle} ${guestName}` : 'يرجى تسجيل حضوري عبر منصة المؤتمر'}`,
                 ...(guestOrg ? [`الجهة / التخصص: ${guestOrg}`] : []),
                 '',
-                'شاكرين لشركة شام هيلث ومستشفى الإمام الصادق هذه المبادرة الطبية القيمة.'
-            ].join('\\n');
-            const phone = String(state.phoneNumber || '').replace(/\\D/g, '');
+                'شاكرين لشركة Şam Health ومستشفى الإمام الصادق هذه المبادرة الطبية القيمة.'
+            ].join('\n');
+            const phone = '9647725247802';
             if (!phone) {
                 showNotification('رقم واتساب غير مضبوط. يرجى مراجعة إعدادات الموقع.', '!');
                 return;
             }
+            // Open WhatsApp directly inside the user click handler to avoid popup blockers.
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+            const openedWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            if (!openedWindow) {
+                // Fallback for browsers that block new tabs.
+                window.location.href = whatsappUrl;
+            }
             showNotification('جارٍ فتح واتساب لتأكيد الحضور...', '');
-            const link = document.createElement('a');
-            link.href = whatsappUrl;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
         });
 
-        // PDF export with clear error handling and a print-to-PDF fallback
-        downloadPdfBtn.addEventListener('click', async () => {
+        // Generate a clean English-only invitation PDF. A print-window fallback is
+        // opened synchronously from the click to avoid popup blockers.
+        downloadPdfBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
             playChime();
-            const element = document.getElementById('invitationCard');
-            const guestName = state.name.trim() || 'شخصية';
-            const cleanFileName = `دعوة_مؤتمر_سرطان_الثدي_${guestName.replace(/\\s+/g, '_')}.pdf`;
-            if (!element) {
-                showNotification('تعذر العثور على بطاقة الدعوة.', '!');
+
+            const guestName = String(state.name || '').trim() || 'Honored Guest';
+            const guestTitle = String(state.prefix || '').trim();
+            const guestOrg = String(state.org || '').trim();
+            const displayName = [guestTitle, guestName].filter(Boolean).join(' ');
+            const safeText = (value) => String(value).replace(/[&<>"']/g, ch => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[ch]));
+            const fileGuest = guestName.replace(/[^a-z0-9_-]+/gi, '_').replace(/^_+|_+$/g, '') || 'Guest';
+
+            // Build the English invitation explicitly. The previous version
+            // referenced an undefined `invitationHtml`, which stopped downloads.
+            const invitationHtml = `
+              <div id="englishPdfInvitation" style="box-sizing:border-box;width:794px;height:1123px;padding:54px;background:#fffdfd;color:#493044;font-family:Arial,Helvetica,sans-serif;direction:ltr;text-align:left;position:relative;overflow:hidden;">
+                <div style="box-sizing:border-box;width:100%;height:100%;border:3px solid #d99ab8;padding:34px;position:relative;">
+                  <div style="border:1px solid #efd4e0;width:100%;height:100%;padding:42px 38px;box-sizing:border-box;text-align:center;display:flex;flex-direction:column;align-items:center;">
+                    <div style="font-size:17px;letter-spacing:3px;color:#9b597b;font-weight:700;margin-top:4px;">ŞAM HEALTH</div>
+                    <div style="font-size:15px;color:#7d6475;margin-top:8px;">In cooperation with Imam Al-Sadiq Hospital</div>
+                    <div style="width:110px;height:2px;background:#d99ab8;margin:38px auto 30px;"></div>
+                    <div style="font-size:18px;letter-spacing:2px;color:#a25d80;font-weight:700;">OFFICIAL INVITATION</div>
+                    <h1 style="font-size:39px;line-height:1.25;margin:24px 0 12px;color:#6d3155;">Specialized Breast Cancer Conference</h1>
+                    <p style="font-size:20px;line-height:1.6;margin:0 0 30px;color:#6d5b67;">You are cordially invited to attend</p>
+                    <div style="width:100%;background:#fceef4;border:1px solid #f1d5e1;padding:22px 20px;margin:6px 0 25px;box-sizing:border-box;">
+                      <div style="font-size:13px;letter-spacing:1.5px;color:#9b597b;font-weight:700;margin-bottom:12px;">INVITED GUEST</div>
+                      <div style="font-size:27px;line-height:1.35;font-weight:700;color:#6d3155;overflow-wrap:anywhere;">${safeText(displayName)}</div>
+                      ${guestOrg ? `<div style="font-size:17px;line-height:1.5;color:#705d69;margin-top:10px;overflow-wrap:anywhere;">${safeText(guestOrg)}</div>` : ''}
+                    </div>
+                    <p style="font-size:18px;line-height:1.65;color:#5d4d58;margin:0 0 28px;">Join us in supporting awareness, early detection, and specialized care for breast cancer.</p>
+                    <div style="width:100%;border:1px solid #e7c4d5;padding:22px 20px;box-sizing:border-box;text-align:left;margin-top:4px;">
+                      <div style="font-size:12px;letter-spacing:1.5px;color:#9b597b;font-weight:700;margin-bottom:10px;">DATE &amp; TIME</div>
+                      <div style="font-size:19px;font-weight:700;color:#493044;">Tuesday, October 20, 2026 · 9:00 AM</div>
+                      <div style="font-size:12px;letter-spacing:1.5px;color:#9b597b;font-weight:700;margin:22px 0 10px;">VENUE</div>
+                      <div style="font-size:19px;font-weight:700;color:#493044;">Imam Al-Sadiq Hospital</div>
+                      <div style="font-size:16px;color:#705d69;margin-top:7px;">Conference Hall · Hilla, Babylon, Iraq</div>
+                    </div>
+                    <div style="margin-top:auto;padding-top:28px;font-size:14px;line-height:1.6;color:#846d7b;">With regards,<br><strong>Şam Health</strong> &amp; Imam Al-Sadiq Hospital</div>
+                  </div>
+                </div>
+              </div>`;
+            const pdfHost = document.createElement('div');
+            pdfHost.style.cssText = 'position:fixed;left:-10000px;top:0;width:794px;height:1123px;overflow:hidden;background:#ffffff;z-index:-1;';
+            pdfHost.innerHTML = invitationHtml;
+            document.body.appendChild(pdfHost);
+            const element = pdfHost.querySelector('#englishPdfInvitation');
+            const options = {
+                margin: 0,
+                filename: `Breast_Cancer_Conference_Invitation_${fileGuest}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    useCORS: true,
+                    logging: false,
+                    scrollX: 0,
+                    scrollY: 0,
+                    windowWidth: 794,
+                    windowHeight: 1123,
+                    width: 794,
+                    height: 1123,
+                    x: 0,
+                    y: 0
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
+                pagebreak: { mode: [] }
+            };
+
+            if (typeof window.html2pdf !== 'function') {
+                pdfHost.remove();
+                showNotification('تعذر تحميل أداة إنشاء PDF. تأكدي من اتصال الإنترنت ثم أعيدي المحاولة.', '!');
                 return;
             }
-            const opt = {
-                margin: [8, 8, 8, 8],
-                filename: cleanFileName,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, allowTaint: false, letterRendering: true, scrollY: 0 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-            };
-            showNotification('جارٍ تجهيز ملف الدعوة...', '⏳');
+
+            showNotification('جارٍ تجهيز ملف الدعوة للتحميل...', '⏳');
             try {
-                if (typeof window.html2pdf === 'function') {
-                    await window.html2pdf().set(opt).from(element).save();
-                    showNotification('تم تجهيز الدعوة. تحققي من مجلد التنزيلات.', '✓');
-                } else {
-                    showNotification('مكتبة PDF غير متاحة؛ افتحي الطباعة واختاري حفظ كـ PDF.', '!');
-                    window.print();
-                }
+                await window.html2pdf().set(options).from(element).save();
+                showNotification('تم تحميل ملف الدعوة PDF بنجاح.', '✓');
             } catch (error) {
                 console.error('PDF export failed:', error);
-                showNotification('تعذر التنزيل المباشر؛ افتحي الطباعة واختاري حفظ كـ PDF.', '!');
-                window.print();
+                showNotification('لم ينجح تحميل PDF. أعيدي المحاولة بعد تحديث الصفحة.', '!');
+            } finally {
+                if (pdfHost.isConnected) pdfHost.remove();
             }
         });
 
-        // Copy Invitation Text
-        copyLinkBtn.addEventListener('click', () => {
-            playChime();
-            const guestName = state.name.trim() ? `${state.prefix} ${state.name.trim()}` : 'حضرة الزميل/ة المحترم/ة';
-            const textToCopy = ` دعوة رسمية لحضور مؤتمر سرطان الثدي \n` +
-                `إلى: ${guestName}\n\n` +
-                `يسر شركة شام هيلث ومستشفى الإمام الصادق في بابل دعوتكم لحضور «مؤتمر سرطان الثدي التخصصي».\n` +
-                `التاريخ: الثلاثاء، 20 تشرين الأول 2026\n` +
-                `⏰ الوقت: 9:00 صباحاً\n` +
-                ` المكان: قاعة المؤتمرات - مستشفى الإمام الصادق (بابل - الحلة)\n\n` +
-                `إدارة إعلام شركة شام هيلث — للتنسيق وتأكيد الحضور: 07725247802`;
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    showNotification('تم نسخ تفاصيل الدعوة بنجاح!', '');
-                }).catch(() => {
-                    fallbackCopy(textToCopy);
-                });
-            } else {
-                fallbackCopy(textToCopy);
-            }
-        });
-
-        function fallbackCopy(text) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.position = "fixed";
-            textArea.style.left = "-999999px";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                showNotification('تم نسخ تفاصيل الدعوة بنجاح!', '');
-            } catch (err) {
-                showNotification('تعذر النسخ التلقائي، يمكنك التقاط صورة للدعوة', 'ℹ');
-            }
-            document.body.removeChild(textArea);
-        }
-
-        // Add to Calendar (.ics Generator)
+        // Add to Calendar        // Add to Calendar (.ics Generator)
         addToCalBtn.addEventListener('click', () => {
             playChime();
             const icsContent = 
 `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Sham Health & Imam Sadiq Hospital//Breast Cancer Conference//AR
+PRODID:-//Şam Health & Imam Sadiq Hospital//Breast Cancer Conference//AR
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-SUMMARY:مؤتمر سرطان الثدي - شركة شام هيلث ومستشفى الإمام الصادق
+SUMMARY:مؤتمر سرطان الثدي - شركة Şam Health ومستشفى الإمام الصادق
 DESCRIPTION:مؤتمر تخصصي لتعزيز الوعي بالكشف المبكر عن سرطان الثدي وعرض أحدث المستجدات الطبية والعلاجية.
 LOCATION:مستشفى الإمام الصادق (قاعة المؤتمرات) - بابل / الحلة
 DTSTART:20261020T060000Z
 DTEND:20261020T100000Z
 STATUS:CONFIRMED
-ORGANIZER;CN="شركة شام هيلث & مستشفى الإمام الصادق":MAILTO:info@shamhealth.com
+ORGANIZER;CN="شركة Şam Health & مستشفى الإمام الصادق":MAILTO:info@shamhealth.com
 END:VEVENT
 END:VCALENDAR`;
 
