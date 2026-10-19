@@ -433,9 +433,45 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
           .hero-photo,.hero-content,.hero-glow,.hero-particle,.hero-ribbon-art {animation:none!important;transform:none!important;}
         }
 
+    
+/* First-open invitation modal */
+.welcome-invitation{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(49,12,32,.58);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:1;visibility:visible;transition:opacity .25s ease,visibility .25s ease}
+.welcome-invitation.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.welcome-invitation-card{position:relative;width:min(100%,520px);padding:clamp(26px,5vw,42px);text-align:center;border:1px solid #edc4d8;border-radius:28px;background:linear-gradient(145deg,#fff 0%,#fff7fb 65%,#fce6ef 100%);box-shadow:0 28px 90px rgba(39,8,27,.28);overflow:hidden}
+.welcome-invitation-card:before{content:"";position:absolute;inset:9px;border:1px solid #f1d5e2;border-radius:20px;pointer-events:none}
+.welcome-ribbon{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 18px;border-radius:20px;background:#fce7f3;color:#a52b61;font-size:28px}
+.welcome-invitation-card h2{font-size:clamp(23px,5vw,31px);font-weight:900;color:#541b3a;line-height:1.5;margin:8px 0}
+.welcome-invitation-card p{color:#79566a;line-height:1.9;font-size:14px}
+.welcome-invitation-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.welcome-invitation-actions button{padding:13px 12px;border-radius:13px;font-weight:800;font-size:13px;cursor:pointer;transition:transform .2s}
+.welcome-invitation-actions button:hover{transform:translateY(-2px)}
+.welcome-open-btn{background:linear-gradient(135deg,#c84c82,#a52b61);color:white;box-shadow:0 8px 20px #a52b612b}
+.welcome-later-btn{background:white;color:#8e2c59;border:1px solid #e8bfd2}
+@media(max-width:430px){.welcome-invitation-actions{grid-template-columns:1fr}.welcome-invitation-card{border-radius:23px}}
+
     </style>
 </head>
 <body class="text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900">
+
+    <div id="welcomeInvitationModal" class="welcome-invitation" role="dialog" aria-modal="true" aria-labelledby="welcomeInvitationTitle">
+      <div class="welcome-invitation-card">
+        <div class="welcome-ribbon" aria-hidden="true">♡</div>
+        <div class="text-xs font-extrabold tracking-wide" style="color:#a52b61">دعوة رسمية • 2026</div>
+        <h2 id="welcomeInvitationTitle">أهلاً بكم في مؤتمر سرطان الثدي التخصصي</h2>
+        <p>يسرّ شركة شام هيلث ومستشفى الإمام الصادق دعوتكم للمشاركة في مؤتمر التوعية بسرطان الثدي والكشف المبكر.</p>
+        <div style="display:grid;gap:8px;margin-top:18px;text-align:right;border:1px solid #f0d5e2;border-radius:16px;background:#ffffffc9;padding:15px;color:#54203a;font-size:13px">
+          <div><strong style="color:#a52b61">التاريخ:</strong> الثلاثاء، 20 تشرين الأول 2026</div>
+          <div><strong style="color:#a52b61">الوقت:</strong> 9:00 صباحاً</div>
+          <div><strong style="color:#a52b61">المكان:</strong> قاعة المؤتمرات — مستشفى الإمام الصادق، بابل / الحلة</div>
+        </div>
+        <div class="welcome-invitation-actions">
+          <button type="button" class="welcome-open-btn" id="welcomeOpenInvitation">عرض بطاقة الدعوة</button>
+          <button type="button" class="welcome-later-btn" id="welcomeCloseModal">تصفح تفاصيل المؤتمر</button>
+        </div>
+        <p style="font-size:11px;margin-top:15px">الكشف المبكر أمل وحياة</p>
+      </div>
+    </div>
+
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <!-- Toast Notification Container -->
@@ -1440,61 +1476,66 @@ background-image: url('https://a0.pickpik.com/images/77/761/pink-awareness-ribbo
             showNotification('تم تطبيق بيانات تجريبية على بطاقة الدعوة', '');
         });
 
-        // WhatsApp RSVP Generator
+        // WhatsApp RSVP Generator — open a properly encoded international WhatsApp link
         whatsappRsvpBtn.addEventListener('click', () => {
-            playChime();
             const guestTitle = state.prefix;
             const guestName = state.name.trim();
             const guestOrg = state.org.trim();
-
-            let message = `السلام عليكم ورحمة الله وبركاته،\n`;
-            message += `أود تأكيد حضوري لـ «مؤتمر سرطان الثدي التخصصي» المنعقد يوم الثلاثاء 20 تشرين الأول 2026 في مستشفى الإمام الصادق (بابل - الحلة).\n\n`;
-            
-            if (guestName) {
-                message += ` اسم المدعو: ${guestTitle} ${guestName}\n`;
-            } else {
-                message += ` اسم المدعو: تم تسجيل الحضور عبر منصة المؤتمر\n`;
+            const message = [
+                'السلام عليكم ورحمة الله وبركاته،',
+                'أود تأكيد حضوري لـ «مؤتمر سرطان الثدي التخصصي» المنعقد يوم الثلاثاء 20 تشرين الأول 2026 في مستشفى الإمام الصادق (بابل - الحلة).',
+                '',
+                `اسم المدعو: ${guestName ? `${guestTitle} ${guestName}` : 'يرجى تسجيل حضوري عبر منصة المؤتمر'}`,
+                ...(guestOrg ? [`الجهة / التخصص: ${guestOrg}`] : []),
+                '',
+                'شاكرين لشركة شام هيلث ومستشفى الإمام الصادق هذه المبادرة الطبية القيمة.'
+            ].join('\\n');
+            const phone = String(state.phoneNumber || '').replace(/\\D/g, '');
+            if (!phone) {
+                showNotification('رقم واتساب غير مضبوط. يرجى مراجعة إعدادات الموقع.', '!');
+                return;
             }
-
-            if (guestOrg) {
-                message += ` الجهة / التخصص: ${guestOrg}\n`;
-            }
-
-            message += `\nشاكرين لشركة شام هيلث ومستشفى الإمام الصادق هذه المبادرة الطبية القيمة.`;
-
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${state.phoneNumber}?text=${encodedMessage}`;
-            
-            showNotification('جارٍ التحويل إلى الواتساب لتأكيد الحضور...', '');
-            window.open(whatsappUrl, '_blank');
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+            showNotification('جارٍ فتح واتساب لتأكيد الحضور...', '');
+            const link = document.createElement('a');
+            link.href = whatsappUrl;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         });
 
-        // High-Quality PDF Export
-        downloadPdfBtn.addEventListener('click', () => {
+        // PDF export with clear error handling and a print-to-PDF fallback
+        downloadPdfBtn.addEventListener('click', async () => {
             playChime();
             const element = document.getElementById('invitationCard');
             const guestName = state.name.trim() || 'شخصية';
-            const cleanFileName = `دعوة_مؤتمر_سرطان_الثدي_${guestName.replace(/\s+/g, '_')}.pdf`;
-
-            showNotification('جارٍ إعداد وتحميل وثيقة الدعوة (PDF)...', '⏳');
-
-            // Configure html2pdf
+            const cleanFileName = `دعوة_مؤتمر_سرطان_الثدي_${guestName.replace(/\\s+/g, '_')}.pdf`;
+            if (!element) {
+                showNotification('تعذر العثور على بطاقة الدعوة.', '!');
+                return;
+            }
             const opt = {
-                margin:       [8, 8, 8, 8],
-                filename:     cleanFileName,
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2.5, useCORS: true, letterRendering: true },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                margin: [8, 8, 8, 8],
+                filename: cleanFileName,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, allowTaint: false, letterRendering: true, scrollY: 0 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
             };
-
-            if (window.html2pdf) {
-                html2pdf().from(element).set(opt).save().then(() => {
-                    showNotification('تم تحميل بطاقة الدعوة بنجاح!', '');
-                }).catch(() => {
-                    // Fallback to print
+            showNotification('جارٍ تجهيز ملف الدعوة...', '⏳');
+            try {
+                if (typeof window.html2pdf === 'function') {
+                    await window.html2pdf().set(opt).from(element).save();
+                    showNotification('تم تجهيز الدعوة. تحققي من مجلد التنزيلات.', '✓');
+                } else {
+                    showNotification('مكتبة PDF غير متاحة؛ افتحي الطباعة واختاري حفظ كـ PDF.', '!');
                     window.print();
-                });
-            } else {
+                }
+            } catch (error) {
+                console.error('PDF export failed:', error);
+                showNotification('تعذر التنزيل المباشر؛ افتحي الطباعة واختاري حفظ كـ PDF.', '!');
                 window.print();
             }
         });
@@ -1595,6 +1636,33 @@ END:VCALENDAR`;
                 });
             });
         });
+
+        // First-visit welcome invitation modal
+        (function setupWelcomeInvitation() {
+            const modal = document.getElementById('welcomeInvitationModal');
+            const openBtn = document.getElementById('welcomeOpenInvitation');
+            const closeBtn = document.getElementById('welcomeCloseModal');
+            function closeModal(scrollToInvitation) {
+                if (!modal) return;
+                modal.classList.add('is-hidden');
+                document.body.style.overflow = '';
+                if (scrollToInvitation) {
+                    const section = document.getElementById('invitationSection');
+                    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+            if (modal) {
+                document.body.style.overflow = 'hidden';
+                if (openBtn) openBtn.addEventListener('click', () => closeModal(true));
+                if (closeBtn) closeBtn.addEventListener('click', () => closeModal(false));
+                modal.addEventListener('click', event => {
+                    if (event.target === modal) closeModal(false);
+                });
+                document.addEventListener('keydown', event => {
+                    if (event.key === 'Escape' && !modal.classList.contains('is-hidden')) closeModal(false);
+                });
+            }
+        })();
 
         // Initialize state
         updateInvitationCard();
